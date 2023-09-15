@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "576138131407",
+    "firebase_url": "https://noting-app-a7050-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "noting-app-a7050",
+    "storage_bucket": "noting-app-a7050.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576138131407:android:7f68d6f489611c50ab44ba",
+        "android_client_info": {
+          "package_name": "com.nothing.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNxeV12eRQ896epImJu77TICkfGJVFPs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
