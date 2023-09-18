@@ -6,7 +6,7 @@ class MyCustomSliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => 50.0; // ความสูงขั้นต่ำของเฮดเดอร์
 
   @override
-  double get maxExtent => 100.0; // ความสูงสูงสุดของเฮดเดอร์
+  double get maxExtent => 50.0; // ความสูงสูงสุดของเฮดเดอร์
 
   @override
   Widget build(

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nothing_app/controllers/profilecontroller.dart';
 import 'package:nothing_app/utils/colors.dart';
 import 'package:nothing_app/utils/fonts.dart';
+import 'package:nothing_app/views/profile/friendsscreen.dart';
 import 'package:nothing_app/views/profile/photosscreen.dart';
 import 'package:nothing_app/widgets/sliverpersistent.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+  final pofilecontroller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +18,8 @@ class ProfileScreen extends StatelessWidget {
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          floatHeaderSlivers: true,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
               SliverAppBar(
@@ -27,6 +32,11 @@ class ProfileScreen extends StatelessWidget {
                   style: FontWhite.font20Bold,
                 ),
                 flexibleSpace: FlexibleSpaceBar(
+                  stretchModes: const [
+                    StretchMode.fadeTitle,
+                    StretchMode.zoomBackground,
+                    StretchMode.blurBackground,
+                  ],
                   background: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,14 +71,17 @@ class ProfileScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                               horizontal: Get.width * 0.04,
                             ),
-                            child: Text("รูป (2)", style: FontWhite.font16Bold),
+                            child: Text(
+                                "รูป (${pofilecontroller.photos.length})",
+                                style: FontWhite.font16Bold),
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: Get.width * 0.04,
                             ),
-                            child:
-                                Text("เพื่อน (1)", style: FontWhite.font16Bold),
+                            child: Text(
+                                "เพื่อน (${pofilecontroller.friends.length})",
+                                style: FontWhite.font16Bold),
                           ),
                         ],
                       ),
@@ -92,8 +105,7 @@ class ProfileScreen extends StatelessWidget {
                                   style: FontWhite.font12,
                                 ),
                                 Text(
-                                  """@litentertainment.th @pixxie_official
-For work 0898040693 (k.Fern)
+                                  """For work 0898040693 (k.Fern)
 092-2726729(k.Bee)
 🌷𝟘𝟞/𝔻𝕖𝕔/𝟚𝟘𝟘𝟘🌷""",
                                   style: FontWhite.font12,
@@ -110,14 +122,18 @@ For work 0898040693 (k.Fern)
               ),
               SliverPersistentHeader(
                 delegate: MyCustomSliverHeaderDelegate(),
-                pinned: true,
+                pinned: false,
+                floating: true,
               ),
             ];
           },
           body: TabBarView(
             children: [
-              PhotosScreen(),
-              Icon(Icons.people, size: 350, color: AppColors.white),
+              PhotosScreen(
+                data: pofilecontroller.photos,
+                isMine: true,
+              ),
+              FriendsScreen(),
             ],
           ),
         ),

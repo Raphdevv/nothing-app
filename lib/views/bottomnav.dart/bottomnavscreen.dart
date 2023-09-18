@@ -14,11 +14,9 @@ class BottomNavScreen extends StatefulWidget {
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
   int selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> widgetOptions = <Widget>[
-    ListChatScreen(),
-    ListGroupChatScreen(),
+  static List<Widget> widgetOptions = <Widget>[
+    const ListChatScreen(),
+    const ListGroupChatScreen(),
     ProfileScreen(),
   ];
 
@@ -32,8 +30,11 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primary,
-      body: Center(
-        child: widgetOptions.elementAt(selectedIndex),
+      body: WillPopScope(
+        onWillPop: () async => false,
+        child: Center(
+          child: widgetOptions.elementAt(selectedIndex),
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
