@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nothing_app/utils/colors.dart';
 import 'package:nothing_app/utils/fonts.dart';
-import 'package:nothing_app/views/chatscreen/chatscreen.dart';
+import 'package:nothing_app/views/chats/chatscreen.dart';
 
 class ListChatScreen extends StatelessWidget {
   const ListChatScreen({super.key});
@@ -13,19 +13,19 @@ class ListChatScreen extends StatelessWidget {
       backgroundColor: AppColors.primary,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.secondary,
         title: Text("N O T H I N G", style: FontWhite.font16),
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: 1,
         itemBuilder: (context, index) {
           return Card(
             color: AppColors.secondary,
             child: ListTile(
               onTap: () {
                 Get.to(
-                  () => ChatScreen(),
+                  () => const ChatScreen(),
                   transition: Transition.cupertino,
                 );
               },
@@ -36,15 +36,15 @@ class ListChatScreen extends StatelessWidget {
                 ),
               ),
               title: Text(
-                "title: ${index + 1}",
+                "Pimma",
                 style: FontWhite.font16,
               ),
               subtitle: Text(
-                "sub: ${index + 1}",
+                "ชอบนะคะ ><",
                 style: FontWhite.font12,
               ),
               trailing: Text(
-                "times..",
+                "10:54",
                 style: FontWhite.font12,
               ),
             ),

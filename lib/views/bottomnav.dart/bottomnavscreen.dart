@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nothing_app/utils/colors.dart';
 import 'package:nothing_app/utils/fonts.dart';
-import 'package:nothing_app/views/chatscreen/listchat.dart';
+import 'package:nothing_app/views/chats/listchat.dart';
+import 'package:nothing_app/views/groupchats/listgroup.dart';
+import 'package:nothing_app/views/profile/profilescreen.dart';
 
 class BottomNavScreen extends StatefulWidget {
   const BottomNavScreen({super.key});
@@ -16,14 +18,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> widgetOptions = <Widget>[
     ListChatScreen(),
-    Text(
-      'Index 1: Group',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Profile',
-      style: optionStyle,
-    ),
+    ListGroupChatScreen(),
+    ProfileScreen(),
   ];
 
   void onItemTapped(int index) {
